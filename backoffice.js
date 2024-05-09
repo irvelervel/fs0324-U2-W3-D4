@@ -49,6 +49,19 @@ const submitEvent = function (e) {
       // Authorization: 'Bearer xxxxxxxxx'
     },
   })
+    .then((response) => {
+      if (response.ok) {
+        // il concerto è stato salvato!
+        alert('Concerto salvato!')
+      } else {
+        // il concerto NON è stato salvato! -> andare nel network tab del browser e indagare lì
+        throw new Error('Errore nel salvataggio della risorsa')
+      }
+    })
+    .catch((err) => {
+      console.log('ERRORE', err)
+      alert(err)
+    })
 }
 
 document.getElementById('event-form').addEventListener('submit', submitEvent)
